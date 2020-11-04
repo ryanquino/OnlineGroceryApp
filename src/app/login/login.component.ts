@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user/user.service';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +11,7 @@ export class LoginComponent implements OnInit {
   username: string
   password: string
   message: string;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private user: UserService, private toastCtrl:ToastController) { }
 
   ngOnInit() {
     this.username = '';
@@ -17,13 +19,20 @@ export class LoginComponent implements OnInit {
     this.message = '';
   }
 
+  async openToast(message){
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 5000,
+      animated: false,
+      keyboardClose: true,
+      position: "middle"
+    });
+    toast.present();
+  }
+
   public login(){
-    if(this.username == "admin" && this.password == "admin"){
-      this.router.navigateByUrl('/home');
-    }
-    else{
-      this.message = "Invalid username and password";
-      
+    if(!this.user.login(this.username, this.password)){
+      this.openToast("Invalid username and password");
     }
   }
 
