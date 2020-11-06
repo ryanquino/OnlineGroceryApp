@@ -1,3 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Online Grocery App</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <h2>{{ message }}</h2>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="dashboard">
+        <ion-icon name="clipboard"></ion-icon>
+        <ion-label>Dashboard</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="history">
+        <ion-icon name="book-outline"></ion-icon>
+        <ion-label>History</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="settings">
+        <ion-icon name="cog-outline"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="account">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Account</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>

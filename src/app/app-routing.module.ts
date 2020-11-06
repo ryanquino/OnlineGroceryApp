@@ -6,7 +6,7 @@ import { WalkthroughComponent } from './walkthrough/walkthrough.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {

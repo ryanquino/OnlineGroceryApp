@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
   username: string
   password: string
   message: string;
+  output: JSON;
+
   constructor(private router: Router, private user: UserService, private toastCtrl:ToastController) { }
 
   ngOnInit() {
