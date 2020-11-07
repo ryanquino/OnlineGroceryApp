@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Grocery Items
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let grocery of groceryList">
+      <ion-item >
+        {{grocery.brand}} {{grocery.description}} {{grocery.price}}    
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="primary">Add To Favorites</ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">Delete</ion-item-option>
+        <ion-item-option color="primary">Add To Cart</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
