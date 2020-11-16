@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { WalkthroughComponent } from './walkthrough/walkthrough.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    FormsModule],
+    FormsModule,
+    HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

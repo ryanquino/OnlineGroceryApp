@@ -27,11 +27,23 @@
 
 .walkthrough-main{
     ion-slides{
+
         .swiper-pagination.swiper-pagination-bullets{
             left: auto !important;
             right: auto;
             text-align: left !important;
+            
+            
         }
 
+    }
+}
+
+.header-banner{
+    ion-slides{
+        .swiper-pagination{
+            position: fixed;
+            top: 280px;
+        }
     }
 }

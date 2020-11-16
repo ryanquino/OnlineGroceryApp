@@ -1,20 +1,51 @@
-<ion-content>
-  <ion-list>
-    <ion-list-header>
-      Grocery Items
-    </ion-list-header>
 
-    <ion-item-sliding *ngFor="let grocery of groceryList">
-      <ion-item >
-        {{grocery.brand}} {{grocery.description}} {{grocery.price}}    
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option color="primary">Add To Favorites</ion-item-option>
-      </ion-item-options>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">Delete</ion-item-option>
-        <ion-item-option color="primary">Add To Cart</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+<ion-content>
+  <div class="header-banner">
+    <ion-slides pager="true" [options]="headerBannerSlides">
+      <ion-slide >
+        <img src="../../../assets/images/shop1.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../../assets/images/shop2.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../../assets/images/shop3.jpg" />
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="categories">
+    <ion-label>Categories</ion-label>
+    <ion-slides #cardSlideElement pager="false" scrollbar="false" [options]="cardSlide">
+      <ion-slide *ngFor="let cat of categoryList">
+        <ion-card>
+          <ion-card-content>
+              <ion-icon name="wallet" class="icon"></ion-icon>
+              <p class="card-text"><b>{{cat.category}}</b></p>      
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <br>
+  <div class="best-selling-items">
+    <ion-list-header lines="full">
+      <ion-label>Best Selling Items</ion-label>
+      <ion-button>See All</ion-button>
+    </ion-list-header>
+    <ion-slides #bestSellerSlideElement pager="false" scrollbar="false" [options]="bestSellerSlide">
+      <ion-slide *ngFor ="let item of bestSellerItems">
+        <ion-card>
+          <img src="{{item.imagePath}}">
+          <ion-card-header>
+            <ion-card-subtitle>{{item.brand}}</ion-card-subtitle>
+            <ion-card-title>{{item.model}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button shape="round" size="small" style="font-size: 8pt;"><span style="padding-left: 10%; margin-right: 15%;">Add To Cart</span></ion-button>  
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
 </ion-content>

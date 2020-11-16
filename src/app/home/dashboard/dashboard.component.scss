@@ -1,0 +1,25 @@
+.header-banner{
+    ion-slides{
+        height: 300px;
+    }
+
+}
+ion-label{
+    margin: 5% 5%;
+}
+.categories{
+    ion-card-content{
+        p{
+            font-size: 6pt;
+        }
+    }
+}
+.best-selling-items{
+    ion-slides{
+        width: auto;
+        img{
+            height: 150px;
+            width: 200px;
+        }
+    }
+}
