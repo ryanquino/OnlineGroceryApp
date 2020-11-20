@@ -17,11 +17,11 @@
   <div class="categories">
     <ion-label>Categories</ion-label>
     <ion-slides #cardSlideElement pager="false" scrollbar="false" [options]="cardSlide">
-      <ion-slide *ngFor="let cat of categoryList">
+      <ion-slide *ngFor="let category of categoryList">
         <ion-card>
           <ion-card-content>
               <ion-icon name="wallet" class="icon"></ion-icon>
-              <p class="card-text"><b>{{cat.category}}</b></p>      
+              <p class="card-text"><b>{{category.categoryName}}</b></p>      
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -39,7 +39,7 @@
           <img src="{{item.imagePath}}">
           <ion-card-header>
             <ion-card-subtitle>{{item.brand}}</ion-card-subtitle>
-            <ion-card-title>{{item.model}}</ion-card-title>
+            <ion-card-title>{{item.productName}} {{item.description}} {{item.price}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-button shape="round" size="small" style="font-size: 8pt;"><span style="padding-left: 10%; margin-right: 15%;">Add To Cart</span></ion-button>  

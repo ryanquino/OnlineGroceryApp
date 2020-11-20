@@ -19,27 +19,12 @@ export class DashboardComponent implements OnInit {
   }
   @ViewChild('bestSellerSlide', { static: true }) bestSellerSlideElement: IonSlides;
   @ViewChild('cardSlide', { static: true }) cardSlideElement: IonSlides;
-  categoryList: any = [
-    {"category": "Category 1"},
-    {"category": "Category 2"},
-    {"category": "Category 3"},
-    {"category": "Category 4"},
-    {"category": "Category 5"},
-    {"category": "Category 6"},
-    {"category": "Category 7"},
-    {"category": "Category 8"},
-    {"category": "Category 9"},
-    {"category": "Category 10"}
-  ]
 
-  bestSellerItems = [
-    {'brand': 'JBL', 'model': 'Headphone', 'imagePath': '../../../assets/images/headphones.png'},
-    {'brand': 'JBL', 'model': 'Headphone', 'imagePath': '../../../assets/images/headphones.png'},
-    {'brand': 'JBL', 'model': 'Headphone', 'imagePath': '../../../assets/images/headphones.png'},
-    {'brand': 'JBL', 'model': 'Headphone', 'imagePath': '../../../assets/images/headphones.png'},
-  ]
+  categoryList = []
 
-  productList: any
+  bestSellerItems = []
+
+  productList = []
 
   constructor(
     private productService: ProductService
@@ -47,13 +32,30 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProducts();
-
+    this.getAllCategories();
+    this.getAllBestSellers();
   }
 
   getAllProducts(){
     this.productService.getAllProducts().subscribe( 
       products => {
-        console.log(products);
+        this.productList = products;
+      }
+    )
+  }
+
+  getAllBestSellers(){
+    this.productService.getAllBestSellers().subscribe( 
+      products => {
+        this.bestSellerItems = products;
+      }
+    )
+  }
+
+  getAllCategories(){
+    this.productService.getAllCategories().subscribe( 
+      data => {
+        this.categoryList = data;
       }
     )
   }
