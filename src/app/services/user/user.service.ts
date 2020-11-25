@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-@Injectable({
-  providedIn: 'root'
-})
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+export interface UserDetails{
+  id: number
+  name: string
+  email: string
+  password: string
+}
+@Injectable()
+
+
 export class UserService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private http: HttpClient) { }
 
   public login(username, password){
     if(username == "admin" && password == "admin"){
@@ -14,5 +23,11 @@ export class UserService {
     else{
       return false;
     }
+  }
+
+  public register(user: UserDetails): Observable<any>{
+    return this.http.post('http://localhost:8000/api/register', user, {
+      headers: {'Content-Type': 'application/json'}
+    })
   }
 }

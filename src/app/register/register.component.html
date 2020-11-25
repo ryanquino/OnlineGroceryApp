@@ -1,3 +1,24 @@
-<p>
-  register works!
-</p>
+<ion-content>
+  <ion-list-header>
+    Registration Form
+  </ion-list-header>
+  <form >
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input name="name" [(ngModel)]="credentials.name" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input name="email" [(ngModel)]="credentials.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="credentials.password" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" ></ion-input>
+    </ion-item>
+    <ion-button (click)="register()">Submit</ion-button>
+  </form>
+</ion-content>>

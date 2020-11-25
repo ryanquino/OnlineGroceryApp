@@ -11,6 +11,7 @@ import { WalkthroughComponent } from './walkthrough/walkthrough.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule} from '@angular/common/http';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule} from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    UserService
   ],
   bootstrap: [AppComponent]
 })
