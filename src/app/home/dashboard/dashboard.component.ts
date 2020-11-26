@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import  { ProductService} from '../../services/product/product.service';
+import  { UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,13 +28,22 @@ export class DashboardComponent implements OnInit {
   productList = []
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.getAllProducts();
     this.getAllCategories();
     this.getAllBestSellers();
+
+    this.userService.getProfile().subscribe(
+      data => {
+        console.log(data);        
+      }
+    )
+    
+    
   }
 
   getAllProducts(){

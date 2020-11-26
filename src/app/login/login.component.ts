@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user/user.service';
+import { UserService, TokenDetails, UserDetails } from '../services/user/user.service';
 import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
@@ -8,17 +8,25 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  username: string
-  password: string
-  message: string;
+  credentials: UserDetails = {
+    id: 0,
+    name: '',
+    email: '',
+    password: ''
+  }
   output: JSON;
 
-  constructor(private router: Router, private user: UserService, private toastCtrl:ToastController) { }
+  constructor(private router: Router, 
+    private user: UserService, 
+    private toastCtrl:ToastController) { }
 
   ngOnInit() {
-    this.username = '';
-    this.password = '';
-    this.message = '';
+    if(this.user.isLoggedIn){
+      this.router.navigateByUrl('/home/dashboard');
+    }
+    else{
+      this.router.navigateByUrl('/login');
+    }
   }
 
   async openToast(message){
@@ -33,9 +41,14 @@ export class LoginComponent implements OnInit {
   }
 
   public login(){
-    if(!this.user.login(this.username, this.password)){
-      this.openToast("Invalid username and password");
-    }
+    this.user.login(this.credentials).subscribe(
+      () => {
+        this.router.navigateByUrl('/home/dashboard');
+      },
+      err => {
+        this.openToast('Error occured');
+      }
+    )
   }
 
 }
