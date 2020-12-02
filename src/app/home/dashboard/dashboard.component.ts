@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { CartService } from 'src/app/services/cart/cart.service';
 import  { ProductService} from '../../services/product/product.service';
 import  { UserService} from '../../services/user/user.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,7 +31,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private userService: UserService
+    private userService: UserService,
+    private cartService: CartService,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -41,8 +45,7 @@ export class DashboardComponent implements OnInit {
       data => {
         console.log(data);        
       }
-    )
-    
+    )    
     
   }
 
@@ -69,5 +72,14 @@ export class DashboardComponent implements OnInit {
       }
     )
   }
+
+  async addToCart(id){
+    this.cartService.addToCart(id);
+
+    const alert = await this.alertCtrl.create({header: 'Success', message: 'Item added in cart'});
+    await alert.present();
+  }
+
+
 
 }

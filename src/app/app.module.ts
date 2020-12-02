@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule} from '@angular/common/http';
 import { UserService } from './services/user/user.service';
+import { CartService } from './services/cart/cart.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserService } from './services/user/user.service';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService
+    UserService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

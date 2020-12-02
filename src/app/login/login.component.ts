@@ -21,12 +21,7 @@ export class LoginComponent implements OnInit {
     private toastCtrl:ToastController) { }
 
   ngOnInit() {
-    if(this.user.isLoggedIn){
-      this.router.navigateByUrl('/home/dashboard');
-    }
-    else{
-      this.router.navigateByUrl('/login');
-    }
+
   }
 
   async openToast(message){

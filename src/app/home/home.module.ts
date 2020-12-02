@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -16,6 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomePageRoutingModule
   ],
   declarations: [HomePage,
-  DashboardComponent]
+  DashboardComponent,
+CartComponent],
+entryComponents: [CartComponent]
 })
 export class HomePageModule {}

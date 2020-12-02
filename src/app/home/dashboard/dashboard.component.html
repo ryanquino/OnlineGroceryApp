@@ -42,7 +42,7 @@
             <ion-card-title>{{item.productName}} {{item.description}} {{item.price}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-button shape="round" size="small" style="font-size: 8pt;"><span style="padding-left: 10%; margin-right: 15%;">Add To Cart</span></ion-button>  
+            <ion-button (click)="addToCart(item.id)" shape="round" size="small" style="font-size: 8pt;"><span style="padding-left: 10%; margin-right: 15%;">Add To Cart</span></ion-button>  
           </ion-card-content>
         </ion-card>
       </ion-slide>
